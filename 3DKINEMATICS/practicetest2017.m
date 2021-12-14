@@ -19,17 +19,3 @@ clc;
 clear all; 
 close all; 
 clc; 
-
-
-
-%%
-
-% My choice is 3
-
-%—– Explanation with a Matlab code——-
-% Please run the following Matlab code with commented lines to verify my answer
-
-clear all; 
-close all; 
-clc; 
-
