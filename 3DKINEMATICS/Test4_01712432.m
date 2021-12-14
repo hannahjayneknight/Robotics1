@@ -43,9 +43,11 @@
 
 %—– Explanation with a Matlab code——-
 % Please run the following Matlab code with commented lines to verify my answer
-clear all; %Clear all variables
-close all; %Close all figures
-clc; %Clear screen
+
+clear all; 
+close all; 
+clc; 
+
 syms l1 l2 l3 theta1 theta2 theta3 real; %Define symbolic variables as real variables
 Ttip = [l1*cos(theta1) + l2*sin(theta1) + l3*cos(theta1)*cos(theta2);...
 l1*sin(theta1) - l2*cos(theta1) + l3*sin(theta1)*cos(theta2);...
