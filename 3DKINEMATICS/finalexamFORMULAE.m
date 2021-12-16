@@ -56,3 +56,22 @@ Tj_i = [ cos(thetai), -sin(thetai), 0, ai;
 
 angle1 = acos(T0_4(1, 3)); %OR
 angle2 = 90 + (theta1 - theta2); 
+
+%%
+% When using pi write sym(pi) to avoid floating point error
+
+
+%%
+%Jacobian stuff
+
+sym J f pdot;
+
+torque = J.'*f;
+
+inverse = inv(J); %when J square
+thetadot = inverse*pdot;
+pseudoinverse = pinv(J); %when J not square
+thetadot2 = pseudoinverse*pdot;
+
+
+
