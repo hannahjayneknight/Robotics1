@@ -57,6 +57,16 @@ T0_4 = simplify(T0_4);
 %% 
 %Question 2c)
 
+C_p = [ 0.5;
+        -0.6;
+        -1; 
+        1; ];
+R_p = simplify(T0_4*C_p);
+
+answer = subs(R_p, {theta1, theta2, L1, L2}, {(60)*(2*pi/360), (30)*(2*pi/360), 0.75, 0.5});
 
 
+%% 
+%Question 2d)
 
+% SEE WORKING OUT IN ONENOTE!
