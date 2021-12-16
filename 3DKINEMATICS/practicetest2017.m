@@ -52,17 +52,19 @@ T1_2 = [ cos(theta2), -sin(theta2), 0, a2;
         sin(theta2)*sin(alpha2), cos(theta2)*sin(alpha2), cos(alpha2), cos(alpha2)*d2;
         0, 0, 0, 1 ];
 
-T2_3 = [ cos(theta3), -sin(theta3), 0, a2;
+T2_3 = [ cos(theta3), -sin(theta3), 0, a3;
         sin(theta3)*cos(alpha3), cos(theta3)*cos(alpha3), -sin(alpha3), -sin(alpha3)*d3;
         sin(theta3)*sin(alpha3), cos(theta3)*sin(alpha3), cos(alpha3), cos(alpha3)*d3;
         0, 0, 0, 1 ];
 
-T3_4 = [ cos(theta4), -sin(theta4), 0, a2;
+T3_4 = [ cos(theta4), -sin(theta4), 0, a4;
         sin(theta4)*cos(alpha4), cos(theta4)*cos(alpha4), -sin(alpha4), -sin(alpha4)*d4;
         sin(theta4)*sin(alpha4), cos(theta4)*sin(alpha4), cos(alpha4), cos(alpha4)*d4;
         0, 0, 0, 1 ];
 
 T0_4 = T0_1*T1_2*T2_3*T3_4;
+
+T0_4 = simplify(T0_4);
 
 %% 
 %Question 2c)

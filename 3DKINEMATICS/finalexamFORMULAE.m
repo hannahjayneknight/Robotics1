@@ -7,6 +7,8 @@
 
 syms thetai alphai di ai;
 
+syms theta1 alpha1 d1 a1 theta2 alpha2 d2 a2 theta3 alpha3 d3 a3 theta4 alpha4 d4 a4 L1 L2 L3 L4;
+
 %CONVERTING DEGS TO RADS = (angle)*(2*pi/360)
 
 %CONVERTING RADS TO DEGS = (angle)*(360/2*pi)
@@ -38,5 +40,19 @@ Tj_i = [ cos(thetai), -sin(thetai), 0, ai;
 
 %T0_4 = T0_1*T1_2*T2_3*T3_4;
 
+%T0_4 = simplify(T0_4);
+
 %% 
-%Jacobian stuff
+
+%  TO FIND THE ANGLE BETWEEN TWO AXES, ONE IN THE BASE FRAME AND ONE IN THE
+%  JOINT FRAME, WE USE THE DOT PRODUCT FORM OF THE ROTATION MATRIX
+
+% For the x-axis of the base frame, and the z-axis of the 3rd joint frame,
+% it is Z_j dot X_i. Steps: 
+% (1) find where Z_j dot X_i is in T0_4 = (1, 3)
+% (2) acos(T0_4(1, 3))
+
+% (Can also use inspection)
+
+angle1 = acos(T0_4(1, 3)); %OR
+angle2 = 90 + (theta1 - theta2); 
