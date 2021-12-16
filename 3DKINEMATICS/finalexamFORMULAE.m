@@ -64,7 +64,7 @@ angle2 = 90 + (theta1 - theta2);
 %%
 %Jacobian stuff
 
-sym J f pdot;
+syms J f pdot;
 
 torque = J.'*f;
 
@@ -72,6 +72,37 @@ inverse = inv(J); %when J square
 thetadot = inverse*pdot;
 pseudoinverse = pinv(J); %when J not square
 thetadot2 = pseudoinverse*pdot;
+
+%%
+%Quaternion stuff
+
+syms e1 e2 e3 e4;
+
+e1 = 0;
+e2 = 0;
+e3 = 0;
+e4 = 0;
+
+Re = [  1-2*(e2^2)-2*(e3^2), 2*(e1*e2-e3*e4), 2*(e1*e3+e2*e4);
+        2*(e1*e2+e3*e4), 1-2*(e1^2)-2*(e3^2), 2*(e2*e3-e1*e4);
+        2*(e1*e3-e2*e4), 2*(e2*e3+e1*e4), 1-2*(e1^2)-2*(e2^2)];
+
+T = [   Re, p;
+        0, 0, 0, 1 ];
+
+
+%%
+%point vector
+
+p = [   x;
+        y;
+        z;
+        1   ];
+
+p2 = [   x;
+        y;
+        z   ];
+
 
 
 
