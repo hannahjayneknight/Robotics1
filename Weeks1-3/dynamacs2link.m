@@ -4,19 +4,22 @@ syms m1 m2 th1 th2 thd thd1 thd2 l1 l2 lm1 lm2 I1 I2 g real;
 syms k1 k2 real;
 syms tau1 tau2 fx fy real;
 
-x1 = lm1*cos(th1);%CoM position of link-1
+x1 = lm1*cos(th1); %CoM position of link-1
 y1 = lm1*sin(th1);
 
-x2 = l1*cos(th1) + lm2*cos(th1+th2);%CoM position of link-2
+x2 = l1*cos(th1) + lm2*cos(th1+th2); %CoM position of link-2
 y2 = l1*sin(th1) + lm2*sin(th1+th2);
 
-J1 = jacobian([x1;y1],[th1 th2]);
+J1 = jacosizebian([x1;y1],[th1 th2]);
 J2 = jacobian([x2;y2],[th1 th2]);
 
 %I1 = (m1*l1^2)/3;
 %I2 = (m2*l2^2)/3;
 II1 = [I1 0;0 0];%Inertia matrix due to link-1
 II2 = [I2 I2;I2 I2];%Inertia matrix due to link-2
+% formula for H:https://uk.mathworks.com/matlabcentral/answers/781353-calculate-mass-inertia-matrix-using-center-of-mass-jacobian-and-link-inertias
+% and: https://robotics.stackexchange.com/questions/14617/dq-inertia-matrix-and-the-jacobian-matrix
+% I don't know exactly how this formula was found though???
 H = simplify([II1 + II2 + m1*J1'*J1 + m2*J2'*J2]);%Mass matrix
 
 %V = (dH/dt)thd
@@ -37,7 +40,7 @@ V = simplify((V1*thd1 + V2*thd2)*thd - V3');%Coriolis and centrifugal torque
 U1 = simplify([m1*g*lm1*sin(th1)+m2*g*(l1*sin(th1) + lm2*sin(th1+th2))]);
 %Elastic potential energy when the joints have springs
 U2 = 0.5*k1*th1^2 + 0.5*k2*th2^2;
-U = U1 + U2;%Total potential energy
+U = U1 + U2; %Total potential energy
 
 G = jacobian(U,[th1 th2]);%Gravitational torque
 
